@@ -4,39 +4,39 @@ import sympy as sy
 #init with velocity(without c)
 class LT:
     def __init__(self,v):
-        self._v = v
-        self._r = float(pow(1-pow(self._v,2),-1/2))
-        self._lt = self.lt_setter()
+        self.__v = v
+        self.__r = float(pow(1-pow(self.__v,2),-1/2))
+        self.__lt = self.lt_setter()
 
 #Setters
     def rest(self,x,y):
-        self._event = event(x,y)
+        self.__event = event(x,y)
 
     def lt_setter(self):
         row = 2
         col = 2
         M = [[0 for i in range(col)] for j in range(row)]
-        M[0][0] = float(self._r)
-        M[0][1] = float(-self._v*self._r)
-        M[1][0] = float(-self._v*self._r)
-        M[1][1] = float(self._r)
+        M[0][0] = float(self.__r)
+        M[0][1] = float(-self.__v*self.__r)
+        M[1][0] = float(-self.__v*self.__r)
+        M[1][1] = float(self.__r)
         return sy.Matrix(M)
 
 #Getters
     def dot(self,mat):
-        return self._event.T*mink_dot()*mat
+        return self.__event.T*mink_dot()*mat
 
     def moving(self):
-        return self._lt*self._event
+        return self.__lt*self.__event
 
     def gamma(self):
-        return self._r
+        return self.__r
 
     def inv(self):
-        return self._lt.inv()*self._event
+        return self.__lt.inv()*self.__event
 
     def lt(self):
-        return self._lt
+        return self.__lt
 
 #Functions used in special relativity calculations
 def sl(r,l):
