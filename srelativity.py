@@ -4,9 +4,9 @@ import sympy as sy
 #init with velocity(without c)
 class LT:
     def __init__(self):
-        self._c = 3*pow(10,8)
+        self._c = 3 * pow(10,8)
 
-    def v(v):
+    def v(self,v):
         self._v = v
         if self._v is not 1:
             self._r = float(pow(1-pow(self._v,2),-1/2))
@@ -109,10 +109,13 @@ def event(x,y):
     M[1] = y
     return sy.Matrix(M)
 
-def atomic_mass(kg):
-    u = 1.66
+def am(kg):
+    u = 1.66 * pow(10,-27)
     return kg/u
 
-def ev(u):
+def Mev(u):
     c_sq = 931.5
     return c_sq * u
+
+def beta(gamma):
+    return sy.sqrt(abs(1 - 1/pow(gamma,2)))
